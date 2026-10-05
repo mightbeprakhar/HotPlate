@@ -1,0 +1,42 @@
+- generic [ref=e4]:
+  - heading "HOTPLATE" [level=1] [ref=e5]
+  - paragraph [ref=e6]: Two food trucks. One town. Where do you park?
+  - paragraph [ref=e7]: A playable study of Hotelling’s location model — with roads, rent, delivery, loyalty & a lurking chain.
+  - generic [ref=e8]:
+    - button "Campaign You vs a scheming AI rival. Out-earn them." [ref=e9] [cursor=pointer]:
+      - img [ref=e11]
+      - generic [ref=e13]: Campaign
+      - generic [ref=e14]: You vs a scheming AI rival. Out-earn them.
+    - button "Duel Two players, one keyboard. Hot-seat." [ref=e15] [cursor=pointer]:
+      - img [ref=e17]
+      - generic [ref=e19]: Duel
+      - generic [ref=e20]: Two players, one keyboard. Hot-seat.
+    - button "Lab Sandbox. Toggle every rule, hunt the Nash." [ref=e21] [cursor=pointer]:
+      - img [ref=e23]
+      - generic [ref=e25]: Lab
+      - generic [ref=e26]: Sandbox. Toggle every rule, hunt the Nash.
+  - generic [ref=e27]:
+    - generic [ref=e28]:
+      - generic [ref=e29]: Town seed
+      - generic [ref=e30]:
+        - textbox "Town seed" [ref=e31]: hotplate
+        - button "Random town" [ref=e32] [cursor=pointer]:
+          - img [ref=e33]
+    - generic [ref=e35]:
+      - generic [ref=e36]: Rival personality
+      - combobox "Rival personality" [ref=e37]:
+        - option "Optimizer — plays the best response" [selected]
+        - option "Undercutter — cheap & cheerful"
+        - option "Premium Snob — fine dining only"
+        - option "Copycat — shadows your every move"
+  - generic [ref=e38]:
+    - generic [ref=e39]: Campaign length
+    - combobox "Campaign length" [ref=e40]:
+      - option "7 days — a quick service"
+      - option "14 days — a fortnight" [selected]
+      - option "30 days — a full season"
+      - option "Endless — no final bell"
+  - button "Start trading" [ref=e41] [cursor=pointer]:
+    - text: Start trading
+    - img [ref=e42]
+  - paragraph [ref=e44]: Runs entirely offline. No accounts, no network. v1.0

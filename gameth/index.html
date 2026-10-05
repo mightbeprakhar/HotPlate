@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HOTPLATE — a Hotelling location game</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Icon sprite: inline SVG symbols, no emoji, no network. -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-dice" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 3v6h-6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M16 9a4 4 0 0 1 0 6"/></symbol>
+  <symbol id="i-motion" viewBox="0 0 24 24"><path d="M3 12c3-5 6 5 9 0s6-5 9 0"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.3a3 3 0 0 1 5.6 1.2c0 2-2.8 2.5-2.8 4"/><path d="M12 17.6h.01"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4l13 8-13 8V4z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6V16h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.4 17.6A2 2 0 0 0 4.1 20.6h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4.5A2.5 2.5 0 0 0 7 10.5M17 6h2.5A2.5 2.5 0 0 1 17 10.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20"/><circle cx="10" cy="8" r="3.2"/><path d="M19.5 20v-1.5a3.5 3.5 0 0 0-2.6-3.4M15.5 5a3.2 3.2 0 0 1 0 6"/></symbol>
+</svg>
+
+<div id="app">
+
+  <!-- ============ MENU ============ -->
+  <section id="menu" class="screen">
+    <div class="menu-card">
+      <div class="menu-glow" aria-hidden="true"></div>
+      <h1 class="logo">HOT<span>PLATE</span></h1>
+      <p class="tagline">Two food trucks. One town. Where do you park?</p>
+      <p class="sub">A playable study of Hotelling&rsquo;s location model — with roads, rent, delivery, loyalty &amp; a lurking chain.</p>
+
+      <div class="mode-grid">
+        <button class="mode-btn" data-mode="campaign">
+          <span class="mode-ico"><svg><use href="#i-trophy"/></svg></span>
+          <span class="mode-name">Campaign</span>
+          <span class="mode-desc">You vs a scheming AI rival. Out-earn them.</span>
+        </button>
+        <button class="mode-btn" data-mode="duel">
+          <span class="mode-ico"><svg><use href="#i-users"/></svg></span>
+          <span class="mode-name">Duel</span>
+          <span class="mode-desc">Two players, one keyboard. Hot-seat.</span>
+        </button>
+        <button class="mode-btn" data-mode="lab">
+          <span class="mode-ico"><svg><use href="#i-bulb"/></svg></span>
+          <span class="mode-name">Lab</span>
+          <span class="mode-desc">Sandbox. Toggle every rule, hunt the Nash.</span>
+        </button>
+      </div>
+
+      <div class="menu-controls">
+        <div class="field">
+          <label for="seedInput">Town seed</label>
+          <div class="seed-row">
+            <input id="seedInput" type="text" value="hotplate" spellcheck="false" autocomplete="off">
+            <button id="shuffleSeed" title="Random town" aria-label="Random town"><svg class="ic"><use href="#i-dice"/></svg></button>
+          </div>
+        </div>
+        <div class="field" id="personaField">
+          <label for="personaSel">Rival personality</label>
+          <select id="personaSel">
+            <option value="optimizer">Optimizer — plays the best response</option>
+            <option value="undercutter">Undercutter — cheap &amp; cheerful</option>
+            <option value="snob">Premium Snob — fine dining only</option>
+            <option value="mimic">Copycat — shadows your every move</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field menu-days">
+        <label for="daysSel">Campaign length</label>
+        <select id="daysSel">
+          <option value="7">7 days — a quick service</option>
+          <option value="10" selected>10 days — a trial run</option>
+          <option value="14">14 days — a fortnight</option>
+          <option value="30">30 days — a full season</option>
+          <option value="0">Endless — no final bell</option>
+        </select>
+      </div>
+
+      <button id="playBtn" class="primary">Start trading <svg class="ic"><use href="#i-play"/></svg></button>
+      <p class="foot">Runs entirely offline. No accounts, no network.</p>
+    </div>
+  </section>
+
+  <!-- ============ GAME ============ -->
+  <section id="game" class="screen hidden">
+    <header id="topbar">
+      <button id="backBtn" class="ghost"><svg class="ic"><use href="#i-back"/></svg> Menu</button>
+      <div class="title">HOT<span>PLATE</span></div>
+      <div class="meta">
+        <span id="modeChip" class="chip"></span>
+        <span id="seedChip" class="chip mono"></span>
+        <span id="roundChip" class="chip mono"></span>
+        <span id="turnChip" class="chip hidden"></span>
+      </div>
+      <div class="tools">
+        <button id="newMapBtn" class="icon" title="New map — fresh town" aria-label="Generate a new town"><svg class="ic"><use href="#i-dice"/></svg></button>
+        <button id="captureBtn" class="icon" title="Save figure (PNG)" aria-label="Save figure as PNG"><svg class="ic"><use href="#i-download"/></svg></button>
+        <button id="soundBtn" class="icon" title="Sound: off" aria-label="Toggle sound"><svg class="ic"><use href="#i-sound"/></svg></button>
+        <button id="motionBtn" class="icon" title="Reduced motion" aria-label="Toggle reduced motion"><svg class="ic"><use href="#i-motion"/></svg></button>
+        <button id="helpBtn" class="icon" title="How to play" aria-label="How to play"><svg class="ic"><use href="#i-help"/></svg></button>
+      </div>
+    </header>
+
+    <main id="stageWrap">
+      <div id="boardHud">
+        <div id="scoreboard" class="scoreboard"></div>
+        <div id="periodSeg" class="seg seg-sm">
+          <button data-period="all" class="on">All day</button>
+          <button data-period="lunch">Lunch</button>
+          <button data-period="evening">Evening</button>
+          <button data-period="latenight">Late</button>
+        </div>
+      </div>
+
+      <div id="stageArea">
+        <div id="stage">
+          <canvas id="cTerrain"></canvas>
+          <canvas id="cDemand"></canvas>
+          <canvas id="cTerritory"></canvas>
+          <canvas id="cEntities"></canvas>
+          <div id="verdict" class="verdict hidden"></div>
+          <div id="cellTip" class="cell-tip hidden"></div>
+        </div>
+      </div>
+
+      <div id="boardFoot">
+        <div id="ticker" class="ticker"><span class="tick-dot"></span><span id="tickText">Welcome to town.</span></div>
+        <div id="legend" class="legend"></div>
+      </div>
+    </main>
+
+    <aside id="panel">
+      <div id="playerCards" class="cards"></div>
+
+      <div class="block" id="insightBlock">
+        <div class="block-hd"><svg class="ic"><use href="#i-bulb"/></svg> Why &amp; what next</div>
+        <div id="insights" class="insights"></div>
+      </div>
+
+      <div class="block">
+        <div class="block-hd"><svg class="ic"><use href="#i-users"/></svg> Customer loyalty</div>
+        <div class="ctrl-row wide">
+          <label for="loyaltySlider">Habit</label>
+          <input type="range" id="loyaltySlider" min="0" max="80" step="5" value="35">
+          <span class="val" id="loyaltyV">35%</span>
+        </div>
+        <p class="hint-txt" id="loyaltyHint">How much of yesterday&rsquo;s custom sticks regardless of today&rsquo;s offer.</p>
+      </div>
+
+      <div id="modBlock" class="block hidden">
+        <div class="block-hd">Model rules <span class="hd-hint">(Lab)</span></div>
+        <div id="modToggles" class="toggles"></div>
+      </div>
+
+      <div id="actions" class="actions"></div>
+
+      <div class="block welfare">
+        <div class="block-hd">Town welfare</div>
+        <div class="stat-grid">
+          <div class="stat"><div class="stat-k">Consumer surplus</div><div id="statCS" class="stat-v mono">—</div></div>
+          <div class="stat"><div class="stat-k">Avg travel</div><div id="statTravel" class="stat-v mono">—</div></div>
+          <div class="stat"><div class="stat-k">Food deserts</div><div id="statDesert" class="stat-v mono">—</div></div>
+          <div class="stat"><div class="stat-k">Market served</div><div id="statMarket" class="stat-v mono">—</div></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ============ DAY REPORT ============ -->
+  <div id="dayModal" class="modal hidden">
+    <div class="modal-card report">
+      <button id="dayClose" class="icon modal-x" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+      <div id="dayBody"></div>
+    </div>
+  </div>
+
+  <!-- ============ HELP ============ -->
+  <div id="helpModal" class="modal hidden">
+    <div class="modal-card">
+      <button id="helpClose" class="icon modal-x" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+      <h2>How to play</h2>
+      <p><b>The idea.</b> Every cell of the town has hungry people. Each diner picks the restaurant with the best <i>value</i> — tasty enough, cheap enough, close enough — or stays home and cooks. You choose <b>where</b> to set up, <b>how much</b> to charge, and <b>how fancy</b> to be.</p>
+      <ul>
+        <li><b>Move</b> — click a cell to relocate your truck. The coloured wash is the territory you capture.</li>
+        <li><b>Price &amp; quality</b> — use the sliders on your card. Higher tiers cost more to run but pull pickier diners.</li>
+        <li><b>Delivery</b> — the dashed ring is your delivery reach. It widens your market but eats margin (commission + logistics).</li>
+        <li><b>Loyalty</b> — the habit slider sets how much of yesterday&rsquo;s custom sticks. High habit rewards getting there first.</li>
+        <li><b>The centre</b> — downtown maximises foot-traffic and volume, but rent bites. A real volume-vs-margin call.</li>
+        <li><b>Watch out</b> — leave a big patch under-served for too long and a <b>chain</b> muscles in.</li>
+      </ul>
+      <p><b>Why &amp; what next.</b> The side panel always explains what is driving your result and offers concrete moves — every hint is simulated before it is shown, so the gain is real.</p>
+      <p><b>Nash check.</b> After each day we test the map: if <i>no one</i> can profit by moving or repricing, you&rsquo;ve hit a <b>Nash equilibrium</b>. Otherwise we show who&rsquo;d deviate and where.</p>
+      <p class="dim">Amber is you (A). Teal is your rival (B). Rose is the chain (C).</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="src/core.js"></script>
+<script src="src/engine.js"></script>
+<script src="src/nash.js"></script>
+<script src="src/render.js"></script>
+<script src="src/ui.js"></script>
+<script>if (window.HP && HP.UI) HP.UI.boot();</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+- generic [ref=e45]:
+  - generic [ref=e46]:
+    - button "Menu" [ref=e47] [cursor=pointer]:
+      - img [ref=e48]
+      - text: Menu
+    - generic [ref=e50]: HOTPLATE
+    - generic [ref=e51]:
+      - generic [ref=e52]: Campaign · Optimizer
+      - generic "Rook Isles — seed \"hotplate\"" [ref=e53]: Rook Isles · hotplate
+      - generic [ref=e54]: Day 10 / 14
+    - generic [ref=e55]:
+      - button "Save figure as PNG" [ref=e56] [cursor=pointer]:
+        - img [ref=e57]
+      - button "Toggle sound" [ref=e59] [cursor=pointer]:
+        - img [ref=e60]
+      - button "Toggle reduced motion" [ref=e62] [cursor=pointer]:
+        - img [ref=e63]
+      - button "How to play" [ref=e65] [cursor=pointer]:
+        - img [ref=e66]
+  - main [ref=e68]:
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e254]:
+          - generic [ref=e255]: A
+          - generic [ref=e257]:
+            - generic [ref=e258]: You
+            - generic "Leading on banked profit" [ref=e259]:
+              - img [ref=e260]
+          - generic [ref=e264]:
+            - generic [ref=e265]: $16,638
+            - generic [ref=e266]: +$2,069/day
+        - generic [ref=e267]:
+          - generic [ref=e268]: B
+          - generic [ref=e270]:
+            - generic [ref=e271]: Rival
+            - generic "Leading on banked profit" [ref=e272]:
+              - img [ref=e273]
+          - generic [ref=e277]:
+            - generic [ref=e278]: $12,124
+            - generic [ref=e279]: +$1,595/day
+        - generic [ref=e280]:
+          - generic [ref=e281]: C
+          - generic [ref=e283]:
+            - generic [ref=e284]: The Chain
+            - generic "Leading on banked profit" [ref=e285]:
+              - img [ref=e286]
+          - generic [ref=e290]:
+            - generic [ref=e291]: $-597
+            - generic [ref=e292]: −$36/day
+      - generic [ref=e97]:
+        - button "All day" [ref=e98] [cursor=pointer]
+        - button "Lunch" [ref=e99] [cursor=pointer]
+        - button "Evening" [ref=e100] [cursor=pointer]
+        - button "Late" [ref=e101] [cursor=pointer]
+    - generic [ref=e103]:
+      - generic:
+        - generic: NOT AT EQUILIBRIUM
+        - generic: The Chain could gain $1,741/day by deviating.
+    - generic [ref=e108]:
+      - generic [ref=e111]: Rival repositions to (18,6)…
+      - generic [ref=e112]:
+        - generic [ref=e113]: You (A)
+        - generic [ref=e115]: Rival (B)
+        - generic [ref=e117]: Chain (C)
+        - generic [ref=e119]: Demand
+        - generic [ref=e121]: Food desert
+  - complementary [ref=e123]:
+    - generic [ref=e124]:
+      - generic [ref=e501]:
+        - generic [ref=e502]:
+          - generic [ref=e503]: A
+          - generic [ref=e504]:
+            - generic [ref=e505]: You
+            - generic [ref=e506]: Casual
+          - generic [ref=e507]:
+            - generic [ref=e508]: $2,069
+            - generic [ref=e509]: profit / day
+        - generic [ref=e510]:
+          - generic [ref=e511]:
+            - generic [ref=e512]: Price
+            - slider [ref=e513] [cursor=pointer]: "20"
+            - generic [ref=e514]: $20
+          - generic [ref=e515]:
+            - generic [ref=e516]: Quality
+            - generic [ref=e517]:
+              - button "Fast" [ref=e518] [cursor=pointer]
+              - button "Casual" [ref=e519] [cursor=pointer]
+              - button "Fine" [ref=e520] [cursor=pointer]
+          - generic [ref=e521]:
+            - generic [ref=e522]: Delivery
+            - slider [ref=e523] [cursor=pointer]: "3"
+            - generic [ref=e524]: "3"
+        - generic [ref=e525]:
+          - generic [ref=e526]:
+            - generic [ref=e527]: Share
+            - generic [ref=e528]: 28%
+          - generic [ref=e529]:
+            - generic [ref=e530]: Covers
+            - generic [ref=e531]: "181"
+          - generic [ref=e532]:
+            - generic [ref=e533]: Revenue
+            - generic [ref=e534]: $3,614
+          - generic [ref=e535]:
+            - generic [ref=e536]: Overhead
+            - generic [ref=e537]: $541
+          - generic [ref=e538]:
+            - generic [ref=e539]: Regulars
+            - generic [ref=e540]: 60%
+          - generic [ref=e541]:
+            - generic [ref=e542]: Delivered
+            - generic [ref=e543]: 0%
+      - generic [ref=e544]:
+        - generic [ref=e545]:
+          - generic [ref=e546]: B
+          - generic [ref=e547]:
+            - generic [ref=e548]: Rival
+            - generic [ref=e549]: Fine
+          - generic [ref=e550]:
+            - generic [ref=e551]: $1,595
+            - generic [ref=e552]: profit / day
+        - generic:
+          - generic:
+            - generic: Price
+            - slider [disabled]: "20"
+            - generic: $20
+          - generic:
+            - generic: Quality
+            - generic:
+              - button "Fast" [disabled]
+              - button "Casual" [disabled]
+              - button "Fine" [disabled]
+          - generic:
+            - generic: Delivery
+            - slider [disabled]: "6"
+            - generic: "6"
+        - generic [ref=e553]:
+          - generic [ref=e554]:
+            - generic [ref=e555]: Share
+            - generic [ref=e556]: 33%
+          - generic [ref=e557]:
+            - generic [ref=e558]: Covers
+            - generic [ref=e559]: "216"
+          - generic [ref=e560]:
+            - generic [ref=e561]: Revenue
+            - generic [ref=e562]: $4,323
+          - generic [ref=e563]:
+            - generic [ref=e564]: Overhead
+            - generic [ref=e565]: $857
+          - generic [ref=e566]:
+            - generic [ref=e567]: Regulars
+            - generic [ref=e568]: 27%
+          - generic [ref=e569]:
+            - generic [ref=e570]: Delivered
+            - generic [ref=e571]: 22%
+      - generic [ref=e572]:
+        - generic [ref=e573]:
+          - generic [ref=e574]: C
+          - generic [ref=e575]:
+            - generic [ref=e576]: The Chain
+            - generic [ref=e577]: Fast · entrant
+          - generic [ref=e578]:
+            - generic [ref=e579]: $-36
+            - generic [ref=e580]: profit / day
+        - generic:
+          - generic:
+            - generic: Price
+            - slider [disabled]: "7"
+            - generic: $7
+          - generic:
+            - generic: Quality
+            - generic:
+              - button "Fast" [disabled]
+              - button "Casual" [disabled]
+              - button "Fine" [disabled]
+          - generic:
+            - generic: Delivery
+            - slider [disabled]: "14"
+            - generic: "14"
+        - generic [ref=e581]:
+          - generic [ref=e582]:
+            - generic [ref=e583]: Share
+            - generic [ref=e584]: 40%
+          - generic [ref=e585]:
+            - generic [ref=e586]: Covers
+            - generic [ref=e587]: "260"
+          - generic [ref=e588]:
+            - generic [ref=e589]: Revenue
+            - generic [ref=e590]: $1,820
+          - generic [ref=e591]:
+            - generic [ref=e592]: Overhead
+            - generic [ref=e593]: $297
+          - generic [ref=e594]:
+            - generic [ref=e595]: Regulars
+            - generic [ref=e596]: 31%
+          - generic [ref=e597]:
+            - generic [ref=e598]: Delivered
+            - generic [ref=e599]: 40%
+    - generic [ref=e196]:
+      - generic [ref=e197]:
+        - img [ref=e198]
+        - text: Why & what next
+      - generic [ref=e200]:
+        - generic [ref=e600]:
+          - generic [ref=e601]: Ahead
+          - generic [ref=e602]: +$474/day vs Rival
+        - generic [ref=e603]: What’s driving this
+        - generic [ref=e604]:
+          - generic [ref=e605]: Your pitch reaches fewer people
+          - generic [ref=e606]: You serve 181 covers against 216. Hungry blocks are closer to B than to you.
+        - generic [ref=e607]:
+          - text: Try this next
+          - generic [ref=e608]: simulated, so the gain is real
+        - paragraph [ref=e609]: No single move improves your day — you’re sitting on your best response.
+    - generic [ref=e225]:
+      - generic [ref=e226]:
+        - img [ref=e227]
+        - text: Customer loyalty
+      - generic [ref=e229]:
+        - generic [ref=e230]: Habit
+        - slider "Habit" [ref=e231] [cursor=pointer]: "35"
+        - generic [ref=e232]: 35%
+      - paragraph [ref=e233]: 35% of yesterday’s custom sticks regardless of today’s offer. First-mover advantage starts to bite.
+    - generic [ref=e234]:
+      - button "Open for the day" [disabled] [ref=e235]:
+        - text: Open for the day
+        - img [ref=e236]
+      - button "Fast-forward 3 days" [disabled] [ref=e238]
+    - generic [ref=e239]:
+      - generic [ref=e240]: Town welfare
+      - generic [ref=e241]:
+        - generic [ref=e242]:
+          - generic [ref=e243]: Consumer surplus
+          - generic [ref=e244]: $-2,342
+        - generic [ref=e245]:
+          - generic [ref=e246]: Avg travel
+          - generic [ref=e247]: "3.9"
+        - generic [ref=e248]:
+          - generic [ref=e249]: Food deserts
+          - generic [ref=e250]: 23%
+        - generic [ref=e251]:
+          - generic [ref=e252]: Market served
+          - generic [ref=e253]: 59%
