@@ -1,0 +1,12 @@
+# Local AI / development configuration
+.claude/
+.playwright-mcp/
+
+# Generated build/test artifacts
+build/
+
+# Local development server
+RUN.ps1
+
+# Test files
+test/

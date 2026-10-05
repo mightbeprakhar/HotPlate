@@ -1,2 +1,0 @@
-[ 1099646ms] ReferenceError: townIntro is not defined
-    at http://localhost:8777/src/ui.js:153:7
